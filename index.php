@@ -12,11 +12,18 @@ class User
     protected $lastname;
     protected $email;
 
+    //Constructor
+    public function __construct($firstname, $lastname, $email)
+    {
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+    }
 
     //getFullDetail
     public function getFullDetail()
     {
-        return $this->lastname . ' ' . $this->firstname . ' ' .  $this->email;
+        return $this->lastname . ' ' . $this->firstname . ' - ' .  $this->email;
     }
 }
 
@@ -33,16 +40,10 @@ class UserPremium extends User
 }
 
 //Istanza user
-$user = new User();
-$user->firstname = 'Marshall';
-$user->lastname = 'Reader';
-$user->email = 'marshder@gmail.com';
+$user = new User('Manuel', 'Santi', 'maueisanti@gmail.com');
 
 //Istanza user premium
-$userPremium = new UserPremium();
-$userPremium->firstname = 'Frank';
-$userPremium->lastname = 'Amadeus';
-$userPremium->email = 'frankdeus@gmail.com';
+$userPremium = new UserPremium('Joe', 'Brahimi', 'amvediquello@gmail.com');
 
 //Creo classe Product
 class Product
@@ -54,7 +55,7 @@ class Product
     //getProductDetail
     public function getProductDetail()
     {
-        return $this->productName . ' ' . $this->price . '€ ' . $this->specs;
+        return $this->productName . ' - ' . $this->price . '€ - ' . $this->specs;
     }
 }
 
@@ -68,6 +69,6 @@ $speaker->specs = 'Bluetooth Speaker';
 //echo per stampare in pagina ogni cosa
 echo '<h2>Informazioni Utenti</h2>';
 echo 'Utente non Premium: <br>' .  $user->getFullDetail();
-echo '<br>Utente Premium: <br>' . $userPremium->getFullDetail() . ' ' . $userPremium->getUserPoint();
+echo '<br>Utente Premium: <br>' . $userPremium->getFullDetail() . ' - Punti: ' . $userPremium->getUserPoint();
 echo '<h2>Informazioni Prodotti</h2>';
 echo $speaker->getProductDetail();
