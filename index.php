@@ -5,7 +5,7 @@
 //ad esempio ci potrebbero essere degli utenti premium che hanno diritto a degli sconti esclusivi
 
 
-//creo una classe utente
+//Creo una classe utente
 class User
 {
     public $firstname;
@@ -14,22 +14,29 @@ class User
 }
 
 
-//creo una classe utente premiumù
+//Creo una classe utente premiumù
 class UserPremium extends User
 {
     public $point = 50;
 }
 
-//istanza user
+//Istanza user
 $user = new User();
 
-//istanza user premium
+//Istanza user premium
 $userPremium = new UserPremium();
 
-
-
-
-
-
-
 var_dump($user, $userPremium);
+
+//Creo classe Product
+class Product
+{
+    public $productName;
+    public $price;
+    public $specs;
+}
+
+//Istanza Product
+$product = new Product();
+
+var_dump($product);
