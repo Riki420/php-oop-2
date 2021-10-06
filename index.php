@@ -8,9 +8,9 @@
 //Creo una classe utente
 class User
 {
-    public $firstname;
-    public $lastname;
-    public $email;
+    protected $firstname;
+    protected $lastname;
+    protected $email;
 
 
     //getFullDetail
@@ -54,7 +54,7 @@ class Product
     //getProductDetail
     public function getProductDetail()
     {
-        return $this->productName . ' ' . $this->price . ' ' . $this->specs;
+        return $this->productName . ' ' . $this->price . '€ ' . $this->specs;
     }
 }
 
