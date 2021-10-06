@@ -11,7 +11,6 @@ class User
     protected $firstname;
     protected $lastname;
     protected $email;
-
     //Constructor
     public function __construct($firstname, $lastname, $email)
     {
@@ -31,7 +30,18 @@ class User
 //Creo una classe utente premiumù
 class UserPremium extends User
 {
+    protected $premiumMember;
     private $userPoint = 50;
+
+    //Constructor
+    public function __construct($firstname, $lastname, $email, $premiumMember)
+    {
+        $this->premiumMember = $premiumMember;
+        parent::__construct($firstname, $lastname, $email);
+    }
+
+
+
     //getUserPoint
     public function getUserPoint()
     {
@@ -43,7 +53,7 @@ class UserPremium extends User
 $user = new User('Manuel', 'Santi', 'maueisanti@gmail.com');
 
 //Istanza user premium
-$userPremium = new UserPremium('Joe', 'Brahimi', 'amvediquello@gmail.com');
+$userPremium = new UserPremium('Joe', 'Brahimi', 'amvediquello@gmail.com', true);
 
 //Creo classe Product
 class Product
@@ -51,11 +61,12 @@ class Product
     public $productName;
     public $price;
     public $specs;
+    private $points;
 
     //getProductDetail
     public function getProductDetail()
     {
-        return $this->productName . ' - ' . $this->price . '€ - ' . $this->specs;
+        return $this->productName . ' - ' . $this->price . '€ - ' . $this->specs . ' ' . $this->points;
     }
 }
 
@@ -64,11 +75,18 @@ $speaker = new Product();
 $speaker->productName = 'Marshall Bluetooth Speaker';
 $speaker->price = 19.90;
 $speaker->specs = 'Bluetooth Speaker';
+$speaker->point = 20;
 
 
-//echo per stampare in pagina ogni cosa
+//Echo per stampare in pagina ogni cosa
 echo '<h2>Informazioni Utenti</h2>';
 echo 'Utente non Premium: <br>' .  $user->getFullDetail();
 echo '<br>Utente Premium: <br>' . $userPremium->getFullDetail() . ' - Punti: ' . $userPremium->getUserPoint();
-echo '<h2>Informazioni Prodotti</h2>';
+
+//Echo prodotto 
+echo '<h2>Prodotto Non Premium</h2>';
+echo $speaker->getProductDetail();
+
+//Echo prodotto premium
+echo '<h2>Prodotto Premium</h2>';
 echo $speaker->getProductDetail();
